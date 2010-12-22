@@ -20,4 +20,8 @@ if defined?(::Merb::Plugins)
   if adapter = { :datamapper => 'data_mapper', :activerecord => 'active_record', :sequel => 'sequel' }[Merb.orm]
     require "will_paginate/finders/#{adapter}"
   end
+else
+  if defined?(::DataMapper)
+    require "will_paginate/finders/data_mapper"
+  end
 end
